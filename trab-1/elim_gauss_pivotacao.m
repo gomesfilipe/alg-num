@@ -15,7 +15,7 @@ function [A, b] = elim_gauss_pivotacao(n, A, b)
         for i = (j + 1: 1: n) # Linhas.
             mult = A(i, j) / A(j, j);
 
-            for k = (j: 1: n) # Colunas (no slide da professora está j+1 para economizar operações).
+            for k = (j + 1: 1: n) # Colunas.
                 A(i, k) = A(i, k) - mult * A(j, k);
             endfor
 
