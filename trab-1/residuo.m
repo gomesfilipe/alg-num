@@ -5,5 +5,4 @@
 % Retorna o vetor resíduo do sistema. Quanto mais próximo de 0, melhor.
 function [r] = residuo(A, b, x)
     r = A * x - b;
-
 endfunction
