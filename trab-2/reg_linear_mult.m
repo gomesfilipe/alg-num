@@ -7,26 +7,29 @@ function [b, r2, info] = reg_linear_mult(n, v, p, x, y)
 
     for i = (1: 1: p)
         for j = (1: 1: i)
-            soma = 0
+            soma = 0;
             for k = (1: 1: n)
-                soma = soma + MatX(k, i) * MatX(k, j)
+                soma = soma + MatX(k, i) * MatX(k, j);
             endfor
             
-            Sxx(i, j) = soma
+            Sxx(i, j) = soma;
 
             if i != j
-                Sxx(j, i = soma)
+                Sxx(j, i) = soma;
             endif
 
-            soma = 0
+            soma = 0;
             for k = (1: 1: n)
-                soma = soma + MatX(k, i) * y(k)
+                soma = soma + MatX(k, i) * y(k);
             endfor
 
-            Sxy(i) = soma
-
-            % Fazer subst. sucessivas.
+            Sxy(i) = soma; % Vetor dos termos independentes.
 
         endfor
     endfor
+    
+    %Sxx
+    [U, d] = elim_gauss_pivotacao(p, Sxx, Sxy);
+    b = subs_retroativas(p, U, d);
+    r2 = 4; % Calcular.
 endfunction
