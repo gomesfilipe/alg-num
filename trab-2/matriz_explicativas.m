@@ -7,7 +7,8 @@ function [MatX, info] = matriz_explicativas(n, v, p, x)
     info = 0;
     if v == 1 % Regressão polinomial.
         for i = (1: 1: n)
-            MatX(i, 1) = x(i, 1);
+            % MatX(i, 1) = x(i, 1);
+            MatX(i, 1) = 1;
         endfor
 
         for j = (2: 1: p)
