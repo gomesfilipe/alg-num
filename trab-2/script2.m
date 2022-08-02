@@ -5,7 +5,5 @@ function script2()
     x = [-2; -1.5; 0; 1; 2.2; 3.1] % Tabela de variáveis explicativas.
     y = [-30.5; -20.2; -3.3; 8.9; 16.8; 21.4] % Tabela de variáveis explicativas.
 
-    % [m] = matriz_explicativas(n, v, p, x)
     [b, r2, info] = reg_linear_mult(n, v, p, x, y)
-
 endfunction
