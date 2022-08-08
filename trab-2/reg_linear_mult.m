@@ -6,7 +6,7 @@
 % y: Variáveis respostas.
 % Retorna o vetor solução b com os parâmetros do modelo, o coeficiente de determinação r2
 % e a informamação sobre erro. Caso ocorra erro, convencionei b ser vazio e r2 igual a -1.
-function [b, r2, info] = reg_linear_mult(n, v, p, x, y)
+function [b, r2, s2, info] = reg_linear_mult(n, v, p, x, y)
     [MatX, info] = matriz_explicativas(n, v, p, x)
 
     if info != 0 % Erro.
@@ -56,4 +56,5 @@ function [b, r2, info] = reg_linear_mult(n, v, p, x, y)
     endfor
 
     r2 = 1 - S / (Sy2 - Sxy(1) * Sxy(1) / n);
+    s2 = S / (n - p);
 endfunction
